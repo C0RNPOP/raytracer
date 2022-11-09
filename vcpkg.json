@@ -1,0 +1,6 @@
+{
+    "name": "raytracer",
+    "dependencies": [
+        "catch2"
+    ]
+}
