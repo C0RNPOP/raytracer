@@ -17,7 +17,7 @@ add_executable(
 
 add_executable(
     raytracer_tests 
-    src/test.cpp
+    src/tuple.test.cpp
 )
 target_link_libraries(
     raytracer_tests
