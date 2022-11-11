@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "util.h"
+#include "util.hpp"
 
 TEST_CASE("Two floating-point number separated by less than EPSILON are equal")
 {
