@@ -45,3 +45,28 @@ TEST_CASE("Two Tuples with the different coordinates are not equal")
 
     REQUIRE(point1 != point2);
 }
+
+TEST_CASE("Adding two Tuples together")
+{
+    SECTION("Adding a Point and a Vector results in a new Point")
+    {
+        Point<int> point{ 3, -2, 5 };
+        Vector<int> vector{ -2, 3, 1 };
+
+        Point<int> expectedPoint{ 1, 1, 6 };
+        Point<int> actualPoint = point + vector;
+
+        REQUIRE(expectedPoint == actualPoint);
+    }
+
+    SECTION("Adding a Vector and a Vector result in a new Vector")
+    {
+        Vector<int> vector1{ 3, -2, 5 };
+        Vector<int> vector2{ -2, 3, 1 };
+
+        Vector<int> expectedPoint{ 1, 1, 6 };
+        Vector<int> actualPoint = vector1 + vector2;
+
+        REQUIRE(expectedPoint == actualPoint);
+    }
+}
