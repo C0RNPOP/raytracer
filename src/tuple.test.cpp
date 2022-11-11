@@ -97,3 +97,13 @@ TEST_CASE("Substracting Tuples")
         REQUIRE(expectedVector == actualVector);
     }
 }
+
+TEST_CASE("Negating a Vector")
+{
+    Vector<int> vector{ 1, -2, 3 };
+    
+    Vector<int> expectedVector{ -1, 2, -3 };
+    Vector<int> actualVector = -vector;
+
+    REQUIRE(expectedVector == actualVector);
+}

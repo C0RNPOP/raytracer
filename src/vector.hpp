@@ -41,3 +41,8 @@ Vector<T> operator-(const Vector<T>& lhs, const Vector<T>& rhs)
     return Vector<T>{ lhs.X() - rhs.X(), lhs.Y() - rhs.Y(), lhs.Z() - rhs.Z() };
 }
 
+template <typename T>
+Vector<T> operator-(const Vector<T>& vector)
+{
+    return Vector<T>{ 0, 0, 0 } - vector;
+}
