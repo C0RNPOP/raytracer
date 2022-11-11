@@ -2,6 +2,8 @@
 #include <sstream>
 
 #include "tuple.hpp"
+#include "point.hpp"
+#include "vector.hpp"
 
 TEST_CASE("A Point is a Tuple with w = 1")
 {
