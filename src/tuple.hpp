@@ -20,6 +20,9 @@ class Tuple
             return os;
         }
 
+        friend bool operator==(const Tuple& rhs, const Tuple& lhs) { return rhs.data == lhs.data; }
+        friend bool operator!=(const Tuple& rhs, const Tuple& lhs) { return rhs.data != lhs.data; }
+
     protected:
         Tuple(std::array<T, N> data) : data{ data } {}
         std::array<T, N> data;

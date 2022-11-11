@@ -29,3 +29,19 @@ TEST_CASE("A Tuple's operator<< is correct")
 
     REQUIRE(expectedString == actualString);
 }
+
+TEST_CASE("Two Tuples with the same coordinates are equal")
+{
+    Point<double> point1{ 1.0, 2.0, 3.0 };
+    Point<double> point2{ 1.0, 2.0, 3.0 };
+
+    REQUIRE(point1 == point2);
+}
+
+TEST_CASE("Two Tuples with the different coordinates are not equal")
+{
+    Point<double> point1{ 1.0, 2.0, 3.0 };
+    Point<double> point2{ 1.1, 2.1, 3.1 };
+
+    REQUIRE(point1 != point2);
+}
