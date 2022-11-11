@@ -66,9 +66,34 @@ TEST_CASE("Adding two Tuples together")
         Vector<int> vector1{ 3, -2, 5 };
         Vector<int> vector2{ -2, 3, 1 };
 
-        Vector<int> expectedPoint{ 1, 1, 6 };
-        Vector<int> actualPoint = vector1 + vector2;
+        Vector<int> expectedVector{ 1, 1, 6 };
+        Vector<int> actualVector = vector1 + vector2;
 
-        REQUIRE(expectedPoint == actualPoint);
+        REQUIRE(expectedVector == actualVector);
+    }
+}
+
+TEST_CASE("Substracting Tuples")
+{
+    SECTION("Substracting a Point and a Point results in a new Vector")
+    {
+        Point<int> point1{ 3, 2, 1 };
+        Point<int> point2{ 5, 6, 7 };
+
+        Vector<int> expectedVector{ -2, -4, -6 };
+        Vector<int> actualVector = point1 - point2;
+
+        REQUIRE(expectedVector == actualVector);
+    }
+
+    SECTION("Substracting a Vector and a Vector result in a new Vector")
+    {
+        Vector<int> vector1{ 3, 2, 1 };
+        Vector<int> vector2{ 5, 6, 7 };
+
+        Vector<int> expectedVector{ -2, -4, -6 };
+        Vector<int> actualVector = vector1 - vector2;
+
+        REQUIRE(expectedVector == actualVector);
     }
 }

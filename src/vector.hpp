@@ -3,6 +3,9 @@
 #include "tuple.hpp"
 
 template<typename T>
+class Point;
+
+template<typename T>
 class Vector : public Tuple<T, 4>
 {
     public:
@@ -25,3 +28,16 @@ Vector<T> operator+(const Vector<T>& lhs, const Vector<T>& rhs)
 {
     return Vector<T>{ lhs.X() + rhs.X(), lhs.Y() + rhs.Y(), lhs.Z() + rhs.Z() };
 }
+
+template <typename T>
+Vector<T> operator-(const Point<T>& lhs, const Point<T>& rhs)
+{
+    return Vector<T>{ lhs.X() - rhs.X(), lhs.Y() - rhs.Y(), lhs.Z() - rhs.Z() };
+}
+
+template <typename T>
+Vector<T> operator-(const Vector<T>& lhs, const Vector<T>& rhs)
+{
+    return Vector<T>{ lhs.X() - rhs.X(), lhs.Y() - rhs.Y(), lhs.Z() - rhs.Z() };
+}
+
