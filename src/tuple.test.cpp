@@ -107,3 +107,24 @@ TEST_CASE("Negating a Vector")
 
     REQUIRE(expectedVector == actualVector);
 }
+
+TEST_CASE("Multiplying a Tuple")
+{
+    Vector<int> vector{ 1, -2, 3 };
+
+    SECTION("Multiplying a scalar and a Vector")
+    {
+        Vector<double> expectedVector{ 3.5, -7, 10.5 };
+        Vector<double> actualVector = 3.5 * vector;
+
+        REQUIRE(expectedVector == actualVector);
+    }
+
+    SECTION("Multiplying a Vector and a scalar")
+    {
+        Vector<double> expectedVector{ 0.5, -1, 1.5 };
+        Vector<double> actualVector = vector * 0.5;
+
+        REQUIRE(expectedVector == actualVector);
+    }
+}

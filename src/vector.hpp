@@ -40,3 +40,15 @@ Vector<T> operator-(const Vector<T>& vector)
 {
     return Vector<T>{ 0, 0, 0 } - vector;
 }
+
+template<typename T1, typename T2>
+auto operator*(T1 scalar, const Vector<T2>& vector) -> Vector<decltype(scalar * vector.X())>
+{
+    return { scalar * vector.X(), scalar * vector.Y(), scalar * vector.Z() };
+}
+
+template<typename T1, typename T2>
+auto operator*(const Vector<T2>& vector, T1 scalar) -> Vector<decltype(scalar * vector.X())>
+{
+    return scalar * vector;
+}
