@@ -13,11 +13,17 @@ find_package(Catch2 REQUIRED)
 add_executable(
     raytracer 
     src/main.cpp
+    src/point.cpp
+    src/vector.cpp
 )
 
 add_executable(
     raytracer_tests 
+    src/point.cpp
+    src/point.test.cpp
     src/tuple.test.cpp
+    src/vector.cpp
+    src/vector.test.cpp
     src/util.test.cpp
 )
 target_link_libraries(
