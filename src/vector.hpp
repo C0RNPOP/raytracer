@@ -20,13 +20,13 @@ class Vector : public Tuple<4>
 
 class Point;
 
-Vector operator+(const Vector& lhs, const Vector& rhs);
+Vector operator+(const Vector&, const Vector&);
 
-Vector operator-(const Point& lhs, const Point& rhs);
-Vector operator-(const Vector& lhs, const Vector& rhs);
-Vector operator-(const Vector& vector);
+Vector operator-(const Point&, const Point&);
+Vector operator-(const Vector&, const Vector&);
+Vector operator-(const Vector&);
 
-Vector operator*(double scalar, const Vector& vector);
-Vector operator*(const Vector& vector, double scalar);
+Vector operator*(double, const Vector&);
+Vector operator*(const Vector&, double);
 
-Vector operator/(const Vector& vector, double scalar);
+Vector operator/(const Vector&, double);

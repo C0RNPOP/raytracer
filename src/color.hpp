@@ -12,8 +12,8 @@ class Color : public Tuple<3>
         double B() const { return this->data[2]; }
 };
 
-Color operator+(const Color& lhs, const Color& rhs);
-Color operator-(const Color& lhs, const Color& rhs);
-Color operator*(double scalar, const Color& Color);
-Color operator*(const Color& color, double scalar);
-Color operator*(const Color& lhs, const Color& rhs);
+Color operator+(const Color&, const Color&);
+Color operator-(const Color&, const Color&);
+Color operator*(double, const Color&);
+Color operator*(const Color&, double);
+Color operator*(const Color&, const Color&);

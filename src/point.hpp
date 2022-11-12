@@ -15,4 +15,4 @@ class Point : public Tuple<4>
 
 class Vector;
 
-Point  operator+(const Point& lhs, const Vector& rhs);
+Point operator+(const Point&, const Vector&);
