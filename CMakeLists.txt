@@ -19,6 +19,7 @@ add_executable(
 
 add_executable(
     raytracer_tests 
+    src/canvas.test.cpp
     src/color.cpp
     src/color.test.cpp
     src/point.cpp

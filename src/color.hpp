@@ -5,6 +5,7 @@
 class Color : public Tuple<3>
 {
     public:
+        Color() : Color(0, 0, 0) {}
         Color(double r, double g, double b) : Tuple<3>{ { r, g, b } } {}
 
         double R() const { return this->data[0]; }
