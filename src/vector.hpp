@@ -52,3 +52,9 @@ auto operator*(const Vector<T2>& vector, T1 scalar) -> Vector<decltype(scalar * 
 {
     return scalar * vector;
 }
+
+template<typename T1, typename T2>
+auto operator/(const Vector<T2>& vector, T1 scalar) -> Vector<decltype(vector.X() / scalar)>
+{
+    return (1 / scalar) * vector;
+}

@@ -128,3 +128,13 @@ TEST_CASE("Multiplying a Tuple")
         REQUIRE(expectedVector == actualVector);
     }
 }
+
+TEST_CASE("Dividing a Vector by a scalar")
+{
+    Vector<int> vector{ 1, -2, 3 };
+
+    Vector<double> expectedVector{ 0.5, -1, 1.5 };
+    Vector<double> actualVector = vector / 2.0;
+
+    REQUIRE(expectedVector == actualVector);
+}
