@@ -141,3 +141,36 @@ TEST_CASE("Computing the magnitude of a Vector")
         REQUIRE_THAT(expectedMagnitude, WithinAbs(actualMagnitude, EPSILON));
     }
 }
+
+TEST_CASE("Normalizing a Vector")
+{
+    SECTION("Normalizing Vector{ 4, 0, 0 }")
+    {
+        Vector vector{ 4, 0, 0 };
+
+        Vector expectedNormalized{ 1, 0, 0 };
+        Vector actualNormalized = vector.Normalized();
+
+        REQUIRE(expectedNormalized == actualNormalized);
+    }
+
+    SECTION("Normalizing Vector{ 4, 0, 0 }")
+    {
+        Vector vector{ 1, 2, 3 };
+
+        Vector expectedNormalized{ 0.26726, 0.53452, 0.80178 };
+        Vector actualNormalized = vector.Normalized();
+
+        REQUIRE(expectedNormalized == actualNormalized);
+    }
+}
+
+TEST_CASE("The magnitude of a normalized Vector is 1")
+{
+    Vector norm = Vector{ 1, 2, 3 }.Normalized();
+
+    double expectedMagnitude = 1;
+    double actualMagnitude = norm.Magnitude();
+
+    REQUIRE(expectedMagnitude == actualMagnitude);
+}

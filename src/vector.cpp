@@ -6,6 +6,11 @@ double Vector::Magnitude() const
     return std::sqrt(X() * X() + Y() * Y() + Z() * Z());
 }
 
+Vector Vector::Normalized() const
+{
+    return *this / Magnitude();
+}
+
 Vector operator+(const Vector& lhs, const Vector& rhs)
 {
     return Vector{ lhs.X() + rhs.X(), lhs.Y() + rhs.Y(), lhs.Z() + rhs.Z() };
