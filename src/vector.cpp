@@ -1,6 +1,11 @@
 #include "point.hpp"
 #include "vector.hpp"
 
+double Vector::Magnitude() const
+{
+    return std::sqrt(X() * X() + Y() * Y() + Z() * Z());
+}
+
 Vector operator+(const Vector& lhs, const Vector& rhs)
 {
     return Vector{ lhs.X() + rhs.X(), lhs.Y() + rhs.Y(), lhs.Z() + rhs.Z() };

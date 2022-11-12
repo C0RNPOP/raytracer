@@ -1,9 +1,12 @@
 #include <catch2/catch_test_macros.hpp>
+#include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include <sstream>
 
 #include "tuple.hpp"
 #include "point.hpp"
 #include "vector.hpp"
+
+using Catch::Matchers::WithinAbs;
 
 TEST_CASE("A Vector is a Tuple with w = 0")
 {
@@ -84,4 +87,57 @@ TEST_CASE("Dividing a Vector by a scalar")
     Vector actualVector = vector / 2.0;
 
     REQUIRE(expectedVector == actualVector);
+}
+
+TEST_CASE("Computing the magnitude of a Vector")
+{
+    SECTION("Computing the magntiude of Vector{ 1, 0, 0 }")
+    {
+        Vector vector{ 1, 0, 0 };
+
+        double expectedMagnitude = 1;
+        double actualMagnitude = vector.Magnitude();
+
+        REQUIRE(expectedMagnitude == actualMagnitude);
+    }
+
+    SECTION("Computing the magntiude of Vector{ 0, 1, 0 }")
+    {
+        Vector vector{ 0, 1, 0 };
+
+        double expectedMagnitude = 1;
+        double actualMagnitude = vector.Magnitude();
+
+        REQUIRE(expectedMagnitude == actualMagnitude);
+    }
+
+    SECTION("Computing the magntiude of Vector{ 0, 0, 1 }")
+    {
+        Vector vector{ 0, 0, 1 };
+
+        double expectedMagnitude = 1;
+        double actualMagnitude = vector.Magnitude();
+
+        REQUIRE(expectedMagnitude == actualMagnitude);
+    }
+
+    SECTION("Computing the magntiude of Vector{ 1, 2, 3 }")
+    {
+        Vector vector{ 1, 2, 3 };
+
+        double expectedMagnitude = std::sqrt(14);
+        double actualMagnitude = vector.Magnitude();
+
+        REQUIRE_THAT(expectedMagnitude, WithinAbs(actualMagnitude, EPSILON));
+    }
+
+    SECTION("Computing the magntiude of Vector{ -1, -2, -3 }")
+    {
+        Vector vector{ -1, -2, -3 };
+
+        double expectedMagnitude = std::sqrt(14);
+        double actualMagnitude = vector.Magnitude();
+
+        REQUIRE_THAT(expectedMagnitude, WithinAbs(actualMagnitude, EPSILON));
+    }
 }

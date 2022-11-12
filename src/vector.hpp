@@ -7,6 +7,8 @@ class Vector : public Tuple<4>
     public:
         Vector(double x, double y, double z) : Tuple<4>{ { x, y, z, 0 } } {}
 
+        double Magnitude() const;
+
         double X() const { return this->data[0]; }
         double Y() const { return this->data[1]; }
         double Z() const { return this->data[2]; }
