@@ -16,8 +16,13 @@ class Canvas
             return data[x + y * width];
         }
 
-        std::size_t Width() { return width; }
-        std::size_t Height() { return height; }
+        Color& operator()(std::size_t x, std::size_t y)
+        {
+            return data[x + y * width];
+        }
+
+        std::size_t Width() const { return width; }
+        std::size_t Height() const { return height; }
 
     private:
         std::array<Color, width * height> data;

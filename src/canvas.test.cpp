@@ -6,7 +6,7 @@ TEST_CASE("Creating a Canvas")
 {
     SECTION("Initializing a Canvas' width and Height")
     {
-        Canvas<10, 20> canvas{};
+        const Canvas<10, 20> canvas{};
 
         REQUIRE(canvas.Width() == 10);
         REQUIRE(canvas.Height() == 20);
@@ -14,7 +14,7 @@ TEST_CASE("Creating a Canvas")
 
     SECTION("Initializing a Canvas without a Color makes it all black")
     {
-        Canvas<10, 20> canvas{};
+        const Canvas<10, 20> canvas{};
 
         Color expectedColor{ 0, 0, 0 };
         for (std::size_t y = 0; y < canvas.Height(); y++)
@@ -30,7 +30,7 @@ TEST_CASE("Creating a Canvas")
 
     SECTION("Initializing a Canvas with a Color")
     {
-        Canvas<10, 20> canvas{ Color{ 1, 0, 0 } };
+        const Canvas<10, 20> canvas{ Color{ 1, 0, 0 } };
 
         Color expectedColor{ 1, 0, 0 };
         for (std::size_t y = 0; y < canvas.Height(); y++)
@@ -43,4 +43,15 @@ TEST_CASE("Creating a Canvas")
             }
         }
     }
+}
+
+TEST_CASE("Writing pixels to a Canvas")
+{
+    Canvas<10, 20> canvas{};
+    Color red{ 1, 0, 0 };
+
+    canvas(2, 3) = red;
+
+    REQUIRE(red == canvas(2, 3));
+    REQUIRE(red != canvas(3, 3));
 }
