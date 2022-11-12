@@ -3,6 +3,8 @@
 #include <array>
 #include <ostream>
 
+#include "util.hpp"
+
 template<typename T, std::size_t N>
 class Tuple
 {
@@ -23,8 +25,16 @@ class Tuple
             return os;
         }
 
-        friend bool operator==(const Tuple& rhs, const Tuple& lhs) { return rhs.data == lhs.data; }
-        friend bool operator!=(const Tuple& rhs, const Tuple& lhs) { return rhs.data != lhs.data; }
+        friend bool operator==(const Tuple& lhs, const Tuple& rhs)
+        { 
+            return std::equal(
+                    lhs.data.begin(), lhs.data.end(), 
+                    rhs.data.begin(), rhs.data.end(),
+                    AreEqualFloating<T>
+            );
+        }
+
+        friend bool operator!=(const Tuple& lhs, const Tuple& rhs) { return !(lhs == rhs); }
 
     protected:
         Tuple(std::array<T, N> data) : data{ data } {}
