@@ -19,6 +19,8 @@ add_executable(
 
 add_executable(
     raytracer_tests 
+    src/color.cpp
+    src/color.test.cpp
     src/point.cpp
     src/point.test.cpp
     src/tuple.test.cpp
