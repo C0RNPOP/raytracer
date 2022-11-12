@@ -16,6 +16,15 @@ double Vector::Dot(const Vector& other) const
     return X() * other.X() + Y() * other.Y() + Z() * other.Z();
 }
 
+Vector Vector::Cross(const Vector& other) const
+{
+    return { 
+        Y() * other.Z() - Z() * other.Y(),
+        Z() * other.X() - X() * other.Z(),
+        X() * other.Y() - Y() * other.X()
+    };
+}
+
 Vector operator+(const Vector& lhs, const Vector& rhs)
 {
     return Vector{ lhs.X() + rhs.X(), lhs.Y() + rhs.Y(), lhs.Z() + rhs.Z() };

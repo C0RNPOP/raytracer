@@ -10,6 +10,7 @@ class Vector : public Tuple<4>
         double Magnitude() const;
         Vector Normalized() const;
         double Dot(const Vector&) const;
+        Vector Cross(const Vector&) const;
 
         double X() const { return this->data[0]; }
         double Y() const { return this->data[1]; }

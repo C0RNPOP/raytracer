@@ -185,3 +185,25 @@ TEST_CASE("The dot product of two Vectors")
 
     REQUIRE(expectedDot == actualDot);
 }
+
+TEST_CASE("The cross product of two Vectors")
+{
+    Vector vector1{ 1, 2, 3 };
+    Vector vector2{ 2, 3, 4 };
+
+    SECTION("The cross product of { 1, 2, 3 } by { 2, 3, 4 }")
+    {
+        Vector expectedDot{ -1, 2, -1 };
+        Vector actualDot = vector1.Cross(vector2);
+
+        REQUIRE(expectedDot == actualDot);
+    }
+
+    SECTION("The cross product of { 2, 3, 4 } by { 1, 2, 3 }")
+    {
+        Vector expectedDot{ 1, -2, 1 };
+        Vector actualDot = vector2.Cross(vector1);
+
+        REQUIRE(expectedDot == actualDot);
+    }
+}
