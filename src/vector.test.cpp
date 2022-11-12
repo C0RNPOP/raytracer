@@ -174,3 +174,14 @@ TEST_CASE("The magnitude of a normalized Vector is 1")
 
     REQUIRE(expectedMagnitude == actualMagnitude);
 }
+
+TEST_CASE("The dot product of two Vectors")
+{
+    Vector vector1{ 1, 2, 3 };
+    Vector vector2{ 2, 3, 4 };
+
+    double expectedDot = 20;
+    double actualDot = vector1.Dot(vector2);
+
+    REQUIRE(expectedDot == actualDot);
+}

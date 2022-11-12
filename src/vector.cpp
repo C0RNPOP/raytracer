@@ -11,6 +11,11 @@ Vector Vector::Normalized() const
     return *this / Magnitude();
 }
 
+double Vector::Dot(const Vector& other) const
+{
+    return X() * other.X() + Y() * other.Y() + Z() * other.Z();
+}
+
 Vector operator+(const Vector& lhs, const Vector& rhs)
 {
     return Vector{ lhs.X() + rhs.X(), lhs.Y() + rhs.Y(), lhs.Z() + rhs.Z() };
