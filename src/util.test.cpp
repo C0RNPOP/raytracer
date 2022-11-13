@@ -17,3 +17,18 @@ TEST_CASE("Two floating-point number separated by more than EPSILON are equal")
 
     REQUIRE(!AreEqualFloating(d1, d2));
 }
+
+TEST_CASE("Splitting a string by delimiter into a vector of string")
+{
+    std::string string{
+        "P3\n"
+        "80 40\n"
+        "255"
+    };
+    char delimiter{ '\n' };
+
+    std::vector<std::string> expectedVector{ "P3", "80 40", "255" };
+    std::vector<std::string> actualVector = split(string, delimiter);
+
+    REQUIRE(expectedVector == actualVector);
+}

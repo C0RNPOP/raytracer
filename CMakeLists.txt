@@ -14,6 +14,7 @@ add_executable(
     raytracer 
     src/main.cpp
     src/point.cpp
+    src/util.cpp
     src/vector.cpp
 )
 
@@ -27,6 +28,7 @@ add_executable(
     src/tuple.test.cpp
     src/vector.cpp
     src/vector.test.cpp
+    src/util.cpp
     src/util.test.cpp
 )
 target_link_libraries(
