@@ -12,6 +12,7 @@ find_package(Catch2 REQUIRED)
 
 add_executable(
     raytracer 
+    src/canvas.cpp
     src/main.cpp
     src/point.cpp
     src/util.cpp
@@ -20,6 +21,7 @@ add_executable(
 
 add_executable(
     raytracer_tests 
+    src/canvas.cpp
     src/canvas.test.cpp
     src/color.cpp
     src/color.test.cpp

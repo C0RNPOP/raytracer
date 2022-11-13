@@ -10,7 +10,7 @@ TEST_CASE("Creating a Canvas")
 {
     SECTION("Initializing a Canvas' width and Height")
     {
-        const Canvas<10, 20> canvas{};
+        const Canvas canvas{ 10, 20 };
 
         REQUIRE(canvas.Width() == 10);
         REQUIRE(canvas.Height() == 20);
@@ -18,7 +18,7 @@ TEST_CASE("Creating a Canvas")
 
     SECTION("Initializing a Canvas without a Color makes it all black")
     {
-        const Canvas<10, 20> canvas{};
+        const Canvas canvas{ 10, 20 };
 
         Color expectedColor{ 0, 0, 0 };
         for (std::size_t y = 0; y < canvas.Height(); y++)
@@ -34,7 +34,7 @@ TEST_CASE("Creating a Canvas")
 
     SECTION("Initializing a Canvas with a Color")
     {
-        const Canvas<10, 20> canvas{ Color{ 1, 0, 0 } };
+        const Canvas canvas{ 10, 20, Color{ 1, 0, 0 } };
 
         Color expectedColor{ 1, 0, 0 };
         for (std::size_t y = 0; y < canvas.Height(); y++)
@@ -51,7 +51,7 @@ TEST_CASE("Creating a Canvas")
 
 TEST_CASE("Writing pixels to a Canvas")
 {
-    Canvas<10, 20> canvas{};
+    Canvas canvas{ 10, 20 };
     Color red{ 1, 0, 0 };
 
     canvas(2, 3) = red;
@@ -64,7 +64,7 @@ TEST_CASE("Converting a Canvas to a PPM")
 {
     SECTION("Constructing the PPM header")
     {
-        Canvas<5, 3> canvas{};
+        Canvas canvas{ 5, 3 };
 
         std::vector<std::string> splitPPM = split(canvas.ToPPM(), '\n');
         std::vector<std::string> expectedPPMHeader{ "P3", "5 3", "255" };
@@ -75,7 +75,7 @@ TEST_CASE("Converting a Canvas to a PPM")
 
     SECTION("Constructing the PPM Body")
     {
-        Canvas<5, 3> canvas{};
+        Canvas canvas{ 5, 3 };
         canvas(0, 0) = Color{ 1.5, 0, 0 };
         canvas(2, 1) = Color{ 0, 0.5, 0 };
         canvas(4, 2) = Color{ -0.5, 0, 1 };
@@ -93,7 +93,7 @@ TEST_CASE("Converting a Canvas to a PPM")
 
     SECTION("Splitting long lines in PPM files")
     {
-        Canvas<10, 2> canvas{ Color{ 1, 0.8, 0.6 } };
+        Canvas canvas{ 10, 2, Color{ 1, 0.8, 0.6 } };
 
         std::vector<std::string> splitPPM = split(canvas.ToPPM(), '\n');
         std::vector<std::string> expectedPPMBody{ 
@@ -109,7 +109,7 @@ TEST_CASE("Converting a Canvas to a PPM")
 
     SECTION("PPM files are terminated by a newline character")
     {
-        Canvas<5, 3> canvas{};
+        Canvas canvas{ 5, 3 };
 
         std::string ppm = canvas.ToPPM();
 
