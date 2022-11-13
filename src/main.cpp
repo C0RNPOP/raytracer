@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "canvas.hpp"
 #include "point.hpp"
 #include "vector.hpp"
 
@@ -25,13 +26,17 @@ Projectile tick(Projectile proj, Environment env)
 
 int main()
 {
-    Projectile proj{ Point{ 0, 1, 0 }, Vector{ 1, 1, 0 }.Normalized() };
+    Projectile proj{ Point{ 0, 1, 0 }, Vector{ 1, 1.8, 0 }.Normalized() * 11.25 };
     Environment env{ Vector{ 0, -0.1, 0 }, Vector{ -0.01, 0, 0 } };
+    Canvas canvas{ 900, 500 };
 
-    unsigned int turn = 0;
     while(proj.position.Y() > 0)
     {
-        std::cout << "Turn " << turn << ": " << proj.position << "\n"; proj = tick(proj, env);
-        turn++;
+        double x = proj.position.X();
+        double y = canvas.Height() - proj.position.Y();
+        canvas(x, y) = Color{ x / canvas.Width(), y / canvas.Height(), 1 };
+        proj = tick(proj, env);
     }
+
+    std::cout << canvas.ToPPM();
 }
