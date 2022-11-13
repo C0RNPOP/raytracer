@@ -10,6 +10,7 @@ template<std::size_t rows, std::size_t cols>
 class Matrix
 {
     public:
+        Matrix() {}
         Matrix(std::array<double, rows * cols> data) : data{ data } {}
 
         double operator()(std::size_t i, std::size_t j) const
@@ -17,7 +18,7 @@ class Matrix
             return data[i * rows + j];
         }
 
-        double operator()(std::size_t i, std::size_t j)
+        double& operator()(std::size_t i, std::size_t j)
         {
             return data[i * rows + j];
         }
@@ -57,5 +58,24 @@ class Matrix
         }
 
     private:
-        std::array<double, rows * cols> data;
+        std::array<double, rows * cols> data{};
 };
+
+template<std::size_t M, std::size_t N, std::size_t P>
+Matrix<M, P> operator*(const Matrix<M, N>& lhs, const Matrix<N, P>& rhs)
+{
+    Matrix<M, P> result{};
+
+    for (std::size_t i = 0; i < M; i++)
+    {
+        for (std::size_t j = 0; j < P; j++)
+        {
+            for (std::size_t k = 0; k < N; k++)
+            {
+                result(i, j) += lhs(i, k) * rhs(k, j);
+            }
+        }
+    }
+
+    return result;
+}

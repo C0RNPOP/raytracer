@@ -108,3 +108,29 @@ TEST_CASE("Two non-identical Matrixes are not equal")
 
     REQUIRE(matrix1 != matrix2);
 }
+
+TEST_CASE("Multiplying two Matrixes")
+{
+    Matrix<4, 4> matrix1{ {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2,
+    } };
+    Matrix<4, 4> matrix2{ {
+        -2, 1, 2,  3,
+         3, 2, 1, -1,
+         4, 3, 6,  5,
+         1, 2, 7,  8,
+    } };
+
+    Matrix<4, 4> expectedMatrix{ {
+        20, 22,  50,  48,
+        44, 54, 114, 108,
+        40, 58, 110, 102,
+        16, 26,  46,  42,
+    } };
+    Matrix<4, 4> actualMatrix = matrix1 * matrix2;
+
+    REQUIRE(expectedMatrix == actualMatrix);
+}
