@@ -25,6 +25,7 @@ add_executable(
     src/canvas.test.cpp
     src/color.cpp
     src/color.test.cpp
+    src/matrix.test.cpp
     src/point.cpp
     src/point.test.cpp
     src/tuple.test.cpp

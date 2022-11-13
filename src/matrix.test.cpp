@@ -1,0 +1,50 @@
+#include <catch2/catch_test_macros.hpp>
+
+#include "matrix.hpp"
+
+TEST_CASE("Constructing and inspecting a Matrix")
+{
+    SECTION("Construcing a 2x2 Matrix")
+    {
+        const Matrix<2, 2> matrix{ {
+            -3,  5,
+             1, -2
+        } };
+    
+        REQUIRE(matrix(0, 0) == -3);
+        REQUIRE(matrix(0, 1) == 5);
+        REQUIRE(matrix(1, 0) == 1);
+        REQUIRE(matrix(1, 1) == -2);
+    }
+
+    SECTION("Construcing a 3x3 Matrix")
+    {
+        const Matrix<3, 3> matrix{ {
+            -3,  5,  0,
+             1, -2, -7,
+             0,  1,  1,
+        } };
+    
+        REQUIRE(matrix(0, 0) == -3);
+        REQUIRE(matrix(1, 1) == -2);
+        REQUIRE(matrix(2, 2) == 1);
+    }
+
+    SECTION("Construcing a 4x4 Matrix")
+    {
+        const Matrix<4, 4> matrix{ {
+               1,    2,    3,    4,
+             5.5,  6.5,  7.5,  8.5,
+               9,   10,   11,   12,
+            13.5, 14.5, 15.5, 16.5
+        } };
+    
+        REQUIRE(matrix(0, 0) == 1);
+        REQUIRE(matrix(0, 3) == 4);
+        REQUIRE(matrix(1, 0) == 5.5);
+        REQUIRE(matrix(1, 2) == 7.5);
+        REQUIRE(matrix(2, 2) == 11);
+        REQUIRE(matrix(3, 0) == 13.5);
+        REQUIRE(matrix(3, 2) == 15.5);
+    }
+}
