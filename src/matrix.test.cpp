@@ -1,4 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
+#include <sstream>
 
 #include "matrix.hpp"
 
@@ -47,4 +48,27 @@ TEST_CASE("Constructing and inspecting a Matrix")
         REQUIRE(matrix(3, 0) == 13.5);
         REQUIRE(matrix(3, 2) == 15.5);
     }
+}
+
+TEST_CASE("A Matrix's operator<< is correct")
+{
+    const Matrix<3, 3> matrix{ {
+        -3,  5,  0,
+         1, -2, -7,
+         0,  1,  1,
+    } };
+
+    std::string expectedString{
+        "{\n"
+        "    -3, 5, 0, \n"
+        "    1, -2, -7, \n"
+        "    0, 1, 1, \n"
+        "}"
+    };
+
+    std::ostringstream matrixStream;
+    matrixStream << matrix;
+    std::string actualString{ matrixStream.str() };
+
+    REQUIRE(expectedString == actualString);
 }
