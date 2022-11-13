@@ -72,3 +72,39 @@ TEST_CASE("A Matrix's operator<< is correct")
 
     REQUIRE(expectedString == actualString);
 }
+
+TEST_CASE("Two identical Matrixes are equal")
+{
+    Matrix<4, 4> matrix1{ {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2
+    } };
+    Matrix<4, 4> matrix2{ {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2
+    } };
+
+    REQUIRE(matrix1 == matrix2);
+}
+
+TEST_CASE("Two non-identical Matrixes are not equal")
+{
+    Matrix<4, 4> matrix1{ {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2
+    } };
+    Matrix<4, 4> matrix2{ {
+        9, 8, 7, 6,
+        5, 4, 3, 2,
+        1, 2, 3, 4,
+        5, 6, 7, 8
+    } };
+
+    REQUIRE(matrix1 != matrix2);
+}

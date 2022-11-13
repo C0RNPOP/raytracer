@@ -42,6 +42,20 @@ class Matrix
             return os;
         }
 
+        friend bool operator==(const Matrix& lhs, const Matrix& rhs)
+        {
+            return std::equal(
+                    lhs.data.begin(), lhs.data.end(), 
+                    rhs.data.begin(), rhs.data.end(),
+                    AreEqualFloating
+            );
+        }
+
+        friend bool operator!=(const Matrix& lhs, const Matrix& rhs)
+        {
+            return !(lhs == rhs);
+        }
+
     private:
         std::array<double, rows * cols> data;
 };
