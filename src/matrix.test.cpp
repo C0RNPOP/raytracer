@@ -2,6 +2,7 @@
 #include <sstream>
 
 #include "matrix.hpp"
+#include "point.hpp"
 
 TEST_CASE("Constructing and inspecting a Matrix")
 {
@@ -131,6 +132,22 @@ TEST_CASE("Multiplying two Matrixes")
         16, 26,  46,  42,
     } };
     Matrix<4, 4> actualMatrix = matrix1 * matrix2;
+
+    REQUIRE(expectedMatrix == actualMatrix);
+}
+
+TEST_CASE("Multiplying a Matrix by a Tuple")
+{
+    Matrix<4, 4> matrix{ {
+        1, 2, 3, 4,
+        2, 4, 4, 2,
+        8, 6, 4, 1,
+        0, 0, 0, 1,
+    } };
+    Point point{ 1, 2, 3 };
+
+    Matrix<4, 1> expectedMatrix{ { 18, 24, 33, 1 } };
+    Matrix<4, 1> actualMatrix = matrix * point;
 
     REQUIRE(expectedMatrix == actualMatrix);
 }
